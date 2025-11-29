@@ -1,22 +1,29 @@
 # validator-gen
+安装方式如下：
+```shell
+go install github.com/daheige/validator_gen@latest
+```
+
 参数校验插件生成后的 `pb/validator.go` 文件代码如下：
 ```go
+package pb
 
-    package pb
-    
-    import (
-    	"github.com/go-playground/validator/v10"
-    )
-    
-    var validate = validator.New()
+import (
+    "github.com/go-playground/validator/v10"
+)
+
+var validate = validator.New()
 ```
+
 生成后的 `validator_req.go` 文件如下：
 ```go
-    package pb
-    
-    // Validate req validator.
-    func (r *HelloRequest) Validate() error {
-    	return validate.Struct(r)
-    }
+package pb
+
+// Validate req validator.
+func (r *HelloRequest) Validate() error {
+    return validate.Struct(r)
+}
 ```
 
+# demo
+https://github.com/daheige/hephfx-micro-svc
